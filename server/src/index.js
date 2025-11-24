@@ -16,8 +16,9 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: "*" || "http://localhost:5173",   // frontend ka URL
-  credentials: true
+  // origin: "*" || "http://localhost:5173",   // frontend ka URL
+  origin:"*"
+  // credentials: true
 }));
 
 
