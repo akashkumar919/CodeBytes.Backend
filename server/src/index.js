@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 
 app.use(cors({
   // origin: "*" || "http://localhost:5173",   // frontend ka URL
-  origin:"*"
-  // credentials: true
+  origin:"*",
+  credentials: true
 }));
 
 
