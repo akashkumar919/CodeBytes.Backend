@@ -229,6 +229,7 @@ const getLeaderboard = async (req, res) => {
   try {
     // Users ko points ke descending order me fetch karna
     const users = await User.find({})
+      .populate("problemSolved")
       .sort({ points: -1, problemSolved: -1 }) // tie-breaker: jo zyada problems solve kare
       .select("firstName lastName photo points problemSolved role");
     const user = users.filter((u, i) => u.role === "user");
@@ -255,7 +256,7 @@ const getLeaderboard = async (req, res) => {
         photo: u.photo,
         email: u.email,
         points: u.points,
-        problemsSolved: u.problemSolved,
+        problemSolved: u.problemSolved,
         role: u.role,
       };
     });
