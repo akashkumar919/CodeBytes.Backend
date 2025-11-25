@@ -28,7 +28,21 @@ const register = async (req, res) => {
     const user = await User.create(req.body);
 
     const reply = {
+      
       firstName: user.firstName,
+      lastName: user.lastName,
+      gender: user.gender,
+      problemSolved: user.problemSolved,
+      points: user.points,
+      age: user.age,
+      city: user.city,
+      githubId: user.githubId,
+      linkedInId: user.linkedInId,
+      country: user.country,
+      college: user.college,
+      skills: user.skills,
+      photo: user.photo,
+      language: user.language,
       email: user.email,
       _id: user._id,
       role: user.role,
@@ -44,8 +58,11 @@ const register = async (req, res) => {
 
     res.cookie("token", Token, {
       maxAge: 60 * 60 * 1000,
-      secure: true, // HTTPS ke liye (production only)
-      sameSite: "strict", // CSRF se protection
+      // secure: true, 
+      // sameSite: "strict", 
+      httpOnly: true,
+      secure: true,        // Render = MUST
+      sameSite: "none",    // CORS + credentials = MUST
     });
 
     return res.status(201).json({
@@ -90,6 +107,19 @@ const login = async (req, res) => {
 
     const reply = {
       firstName: user.firstName,
+      lastName: user.lastName,
+      gender: user.gender,
+      problemSolved: user.problemSolved,
+      points: user.points,
+      age: user.age,
+      city: user.city,
+      githubId: user.githubId,
+      linkedInId: user.linkedInId,
+      country: user.country,
+      college: user.college,
+      skills: user.skills,
+      photo: user.photo,
+      language: user.language,
       email: user.email,
       _id: user._id,
       role: user.role,
@@ -104,9 +134,12 @@ const login = async (req, res) => {
 
     res.cookie("token", Token, {
       maxAge: 24 * 60 * 60 * 1000,
+      // httpOnly: true,
+      // secure: true,
+      // sameSite: "strict",
       httpOnly: true,
-      secure: true,
-      sameSite: "strict",
+      secure: true,        // Render = MUST
+      sameSite: "none",    // CORS + credentials = MUST
     });
 
     return res.status(200).json({
@@ -330,8 +363,11 @@ const loginWithGoogle = async (req, res) => {
 
     res.cookie("token", Token, {
       maxAge: 60 * 60 * 1000,
-      secure: true, // HTTPS ke liye (production only)
-      sameSite: "strict", // CSRF se protection
+      // secure: true, // HTTPS ke liye (production only)
+      // sameSite: "strict", // CSRF se protection
+      httpOnly: true,
+      secure: true,        // Render = MUST
+      sameSite: "none",    // CORS + credentials = MUST
     });
 
     return res.status(200).json({ success: true, user: user });
