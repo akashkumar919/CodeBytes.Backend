@@ -27,7 +27,7 @@ authRouter.get("/info",rateLimiter,coolDown,verifyToken,userInfo);
 // fetch all user Info
 authRouter.get("/allUserInfo",verifyToken,getLeaderboard);
 // delete user 
-authRouter.delete("/deleteUser",verifyUser,deleteUserProfile);
+authRouter.delete("/deleteUser/:id",verifyUser,deleteUserProfile);
 // for user Authenticating
 authRouter.get("/check",verifyUserOrAdmin,userAuthenticating);
 
