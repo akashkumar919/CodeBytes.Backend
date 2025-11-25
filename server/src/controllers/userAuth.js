@@ -89,7 +89,8 @@ const login = async (req, res) => {
       });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate("problemSolved");
+    console.log(user)
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -183,7 +184,7 @@ const userInfo = async (req, res) => {
         message: "There is no ID!",
       });
     }
-    const user = await User.findById(req.payload._id).select(
+    const user = await User.findById(req.payload._id).populate("problemSolved").select(
       "-role -password -createdAt -updatedAt -__v -otp -otpExpires"
     );
     if (!user) {
@@ -210,7 +211,7 @@ const updateUser = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(userId, data, {
       new: true,
       runValidators: true,
-    }).select("-password");
+    }).populate("problemSolved").select("-password");
 
     return res.json({
       success: true,

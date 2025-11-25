@@ -26,7 +26,7 @@ const verifyUserOrAdmin = async(req,res,next)=>{
            
            req.payload = payload;
 
-           const user = await User.findById(payload._id);
+           const user = await User.findById(payload._id).populate("problemSolved");
 
            if(!user){
                return res.send("User not found!")
