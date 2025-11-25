@@ -87,7 +87,7 @@ app.use(express.urlencoded({ extended: true }));
 // ✅ FIX 1: Proper CORS
 app.use(
   cors({
-    origin: ["http://localhost:5173"],   // local
+    origin: ["http://localhost:5173","https://codebytess.netlify.app"],   // local
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
   })
