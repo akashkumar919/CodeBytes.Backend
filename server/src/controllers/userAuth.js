@@ -57,7 +57,7 @@ const register = async (req, res) => {
     );
 
     res.cookie("token", Token, {
-      maxAge: 60 * 60 * 1000,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       // secure: true, 
       // sameSite: "strict", 
       httpOnly: true,
@@ -134,7 +134,7 @@ const login = async (req, res) => {
     );
 
     res.cookie("token", Token, {
-      maxAge: 24 * 60 * 60 * 1000,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       // httpOnly: true,
       // secure: true,
       // sameSite: "strict",
@@ -364,7 +364,7 @@ const loginWithGoogle = async (req, res) => {
     );
 
     res.cookie("token", Token, {
-      maxAge: 60 * 60 * 1000,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       // secure: true, // HTTPS ke liye (production only)
       // sameSite: "strict", // CSRF se protection
       httpOnly: true,
